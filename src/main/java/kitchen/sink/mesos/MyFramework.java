@@ -38,7 +38,6 @@ public class MyFramework {
                 for(Protos.Resource resource : offer.getResourcesList()) {
                     log.info("OFFER resource {} - {}", resource.getName(), resource.getScalar().getValue());
                     if (resource.getName().equalsIgnoreCase("cpus")) {
-//                        log.info("OFFER ID {} with cpus {}", offer.getId(), resource.getScalar().getValue());
                         offerCPUs =  resource.getScalar().getValue();
                     }
 
@@ -63,27 +62,15 @@ public class MyFramework {
                         .setCommand(Protos.CommandInfo.newBuilder().setShell(true).setValue("sleep 20"))
                         .build();
 
-//                Protos.Offer.Operation.Launch.Builder launchOpBuilder = Protos.Offer.Operation.Launch.newBuilder();
-//                launchOpBuilder.addTaskInfos(taskInfo);
-
-                // accept offers
                 List<Protos.OfferID> offerIds = new ArrayList<>();
                 offerIds.add(offer.getId());
 
                 // filters for remaining resources (not used by task allocations)
                 Protos.Filters filters = Protos.Filters.newBuilder().setRefuseSeconds(1).build();
 
-//                ArrayList<Protos.Offer.Operation> operations = new ArrayList<>();
-//                Protos.Offer.Operation operation = Protos.Offer.Operation.newBuilder().setType(Protos.Offer.Operation.Type.LAUNCH).setLaunch(launchOpBuilder).build();
-//                operations.add(operation);
-
-//                driver.acceptOffers(offerIds, operations, filters);
-
                 List<Protos.TaskInfo> tasks = new ArrayList<>();
                 tasks.add(taskInfo);
                 driver.launchTasks(offerIds, tasks, filters);
-
-                // driver.declineOffer(offer.getId());
             }
         }
 
