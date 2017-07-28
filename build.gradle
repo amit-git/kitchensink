@@ -15,6 +15,8 @@ dependencies {
     compile("org.apache.mesos:mesos:1.+")
     compile("org.slf4j:slf4j-api:1.+")
     compile("org.slf4j:slf4j-simple:1.+")
+    compile("io.reactivex.rxjava2:rxjava:2.+")
+    compile("com.amazonaws:aws-java-sdk:1.11.169")
 
 }
 
